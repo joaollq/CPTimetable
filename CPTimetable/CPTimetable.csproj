@@ -14,8 +14,10 @@
     <MinimumVisualStudioVersion>12</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{BC8A1FFA-BEE3-4634-8014-F334798102B3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <PackageCertificateKeyFile>CPTimetable_TemporaryKey.pfx</PackageCertificateKeyFile>
-    <PackageCertificateThumbprint>FA76312491852FE9850E5DDE5AD6615A47C99F20</PackageCertificateThumbprint>
+    <PackageCertificateKeyFile>CPTimetable_StoreKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateThumbprint>FB34BEFA30DF827EB0F920DC2DDAB2E301CA1115</PackageCertificateThumbprint>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxBundlePlatforms>neutral</AppxBundlePlatforms>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -116,6 +118,7 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <None Include="CPTimetable_StoreKey.pfx" />
     <None Include="CPTimetable_TemporaryKey.pfx" />
     <None Include="packages.config" />
   </ItemGroup>
@@ -124,6 +127,7 @@
     <Content Include="Assets\SmallLogo.scale-100.png" />
     <Content Include="Assets\SplashScreen.scale-100.png" />
     <Content Include="Assets\StoreLogo.scale-100.png" />
+    <None Include="Package.StoreAssociation.xml" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">

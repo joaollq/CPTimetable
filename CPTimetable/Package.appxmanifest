@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest">
-  <Identity Name="840abd89-585e-4644-8fe6-1f8b33a78e4d" Publisher="CN=Joao Quitério" Version="1.0.0.0" />
+  <Identity Name="38536joaollq.HorriodosComboios" Publisher="CN=4F6CA668-33E9-43C2-A922-9801288D94FA" Version="1.1.0.2" />
   <Properties>
-    <DisplayName>HorarioComboios</DisplayName>
-    <PublisherDisplayName>João Quitério</PublisherDisplayName>
+    <DisplayName>Horário dos Comboios</DisplayName>
+    <PublisherDisplayName>joaollq</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Prerequisites>

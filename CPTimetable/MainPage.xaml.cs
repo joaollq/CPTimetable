@@ -51,7 +51,7 @@ namespace CPTimetable {
             }
             catch (Exception)
             {
-                var dialog = new Windows.UI.Popups.MessageDialog("Tem de estar conectado à internet para correr esta app");
+                var dialog = new Windows.UI.Popups.MessageDialog("Tem de estar conetado à internet para correr esta app");
 
 
                 dialog.Commands.Add(new UICommand("Close",new UICommandInvokedHandler(this.CloseApp)));
