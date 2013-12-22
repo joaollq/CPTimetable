@@ -7,6 +7,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Data.Json;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -47,14 +48,35 @@ namespace CPTimetable
         private async void initilizeStations()
         {
 
-
+            HttpResponseMessage response = null;
             HttpClient client = new HttpClient();
-            HttpResponseMessage response = await client.GetAsync("http://carlosefonseca.com/cp/estacoes.txt");
-            String result = await response.Content.ReadAsStringAsync();
+            String result = "";
+            try
+            {
+                response = await client.GetAsync("http://carlosefonseca.com/cp/estacoes.txt");
+                result = await response.Content.ReadAsStringAsync();
+            }
+            catch (Exception)
+            {
+                var dialog = new Windows.UI.Popups.MessageDialog("Tem de estar conectado à internet para correr esta app");
+
+
+                dialog.Commands.Add(new UICommand("Close",new UICommandInvokedHandler(this.CloseApp)));
+                dialog.DefaultCommandIndex = 0;
+                dialog.CancelCommandIndex = 1;
+                dialog.ShowAsync();
+            }
+            
+            
 
             List<String> stations = ParseTxt(result);
             stationBox1.ItemsSource = stations;
             stationBox2.ItemsSource = stations;
+        }
+
+        private void CloseApp(IUICommand command)
+        {
+            Application.Current.Exit();
         }
 
         private List<String> ParseTxt(string result)
