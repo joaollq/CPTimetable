@@ -6,14 +6,38 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+    <Page.Resources>
+        <DataTemplate x:Key="TrainListTemplate">
+            <Grid Margin="20,20,20,20">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition MinWidth="245"/>
+                </Grid.ColumnDefinitions>
+                <Border VerticalAlignment="Top" Margin="0, 0, 12, 0"  Width="120" Height="120" BorderThickness="1"  >
+                    <TextBlock Text="{Binding Type}" Margin="0,-8,0,0" TextWrapping="Wrap" />
+                </Border>
+                <StackPanel Orientation="Vertical" Grid.Column="1" MaxHeight="164">
+                    <TextBlock Text="{Binding Departure}" Margin="0,-8,0,0" TextWrapping="Wrap" />
+                    <TextBlock Text="{Binding Arrival}" Margin="0, 8, 0, 0" LineStackingStrategy="BlockLineHeight" LineHeight="28" TextWrapping="Wrap" TextTrimming="WordEllipsis"/>
+                    <TextBlock Text="{Binding Duration}" Margin="0, 8, 0, 0" LineStackingStrategy="BlockLineHeight" LineHeight="28" TextWrapping="Wrap" TextTrimming="WordEllipsis"/>
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+        <x:String x:Key="AppName">Horário dos Comboios</x:String>
+    </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <ComboBox x:Name="stationBox1" ItemsSource="{Binding}" HorizontalAlignment="Left" Margin="670,206,0,0" VerticalAlignment="Top" Width="401" SelectionChanged="ComboBox_SelectionChanged"/>
-        <ComboBox x:Name="stationBox2" ItemsSource="{Binding}" HorizontalAlignment="Left" Margin="670,260,0,0" VerticalAlignment="Top" Width="401" SelectionChanged="ComboBox_SelectionChanged"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="827,407,0,0" VerticalAlignment="Top" Width="113" Click="Button_Click"/>
-        <DatePicker x:Name="date" HorizontalAlignment="Left" Margin="670,313,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="hourPicker" ItemsSource="{Binding}" HorizontalAlignment="Left" Margin="1007,313,0,0" VerticalAlignment="Top" Width="62"/>
-        <ListView x:Name="trainList" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="279" Margin="10,493,0,-4" VerticalAlignment="Top" Width="1356" SelectionChanged="ListView_SelectionChanged"/>
-
+        <ComboBox x:Name="stationBox1" ItemsSource="{Binding}" HorizontalAlignment="Left" Margin="670,61,0,0" VerticalAlignment="Top" Width="517" SelectionChanged="ComboBox_SelectionChanged"/>
+        <ComboBox x:Name="stationBox2" ItemsSource="{Binding}" HorizontalAlignment="Left" Margin="670,132,0,0" VerticalAlignment="Top" Width="517" SelectionChanged="ComboBox_SelectionChanged"/>
+        <Button x:Name="searchButton"  Content="Procurar" HorizontalAlignment="Left" Margin="1077,252,0,0" VerticalAlignment="Top" Width="113" Click="Button_Click" IsEnabled="False"/>
+        <DatePicker x:Name="date" HorizontalAlignment="Left" Margin="670,198,0,0" VerticalAlignment="Top"/>
+        <ListView x:Name="trainList" HorizontalAlignment="Left" Height="auto" Margin="0,372,0,0" VerticalAlignment="Top" Width="1366" ItemTemplate="{StaticResource TrainListTemplate}" IsSwipeEnabled="False" />
+        <TextBlock HorizontalAlignment="Left" Margin="598,255,0,0" TextWrapping="Wrap" Text="Hora de Partida" VerticalAlignment="Top" Width="72" FontSize="14" Height="32"/>
+        <TextBlock HorizontalAlignment="Left" Margin="598,61,0,0" TextWrapping="Wrap" Text="Estação de Partida" VerticalAlignment="Top" Width="72" Height="32" FontSize="14"/>
+        <TextBlock HorizontalAlignment="Left" Margin="598,198,0,0" TextWrapping="Wrap" Text="Data da Viagem" VerticalAlignment="Top" Width="72" Height="32" FontSize="14" SelectionChanged="TextBlock_SelectionChanged"/>
+        <TextBlock HorizontalAlignment="Left" Margin="598,132,0,0" TextWrapping="Wrap" Text="Estação de Chegada" VerticalAlignment="Top" Width="72" Height="32" FontSize="14"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,325,0,0" TextWrapping="Wrap" Text="Resultados" VerticalAlignment="Top" FontSize="36" FontWeight="Bold"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,18,0,0" TextWrapping="Wrap" Text="{StaticResource AppName}" VerticalAlignment="Top" FontSize="48" FontWeight="Bold"/>
+        <ComboBox x:Name="hourPicker" ItemsSource="{Binding}" HorizontalAlignment="Left" Margin="670,255,0,0" VerticalAlignment="Top" Width="79" RenderTransformOrigin="0.458,0.469" SelectionChanged="hourPicker_SelectionChanged"/>
     </Grid>
 </Page>
